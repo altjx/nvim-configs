@@ -6,12 +6,32 @@
 local M = {}
 
 M.base46 = {
-	theme = "onedark",
+	theme = "github_dark",
+}
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+M.ui = {
+	statusline = {
+		theme = "default", -- default/vscode/vscode_colored/minimal
+		-- Override the default modules to show relative path
+		order = nil, -- use default order
+		modules = {
+			file = function()
+				local icon = " 󰈚 "
+				local path = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+				local name = (path == "" and "Empty ") or path:match("([^/\\]+)[/\\]*$")
+
+				-- Get relative path from current working directory
+				local cwd = vim.fn.getcwd()
+				local relative_path = vim.fn.fnamemodify(path, ":~:.")
+
+				if relative_path == "" then
+					relative_path = "Empty"
+				end
+
+				return "%#St_file#" .. icon .. relative_path .. " "
+			end,
+		},
+	},
 }
 
 -- M.nvdash = { load_on_startup = true }
@@ -19,6 +39,18 @@ M.base46 = {
 --       tabufline = {
 --          lazyload = false
 --      }
+-- }
+
+-- Disabled in favor of neo-tree
+-- M.nvimtree = {
+--   view = {
+--     width = 45,
+--   },
+--   renderer = {
+--     indent_markers = {
+--       enable = true,
+--     },
+--   },
 -- }
 
 return M
