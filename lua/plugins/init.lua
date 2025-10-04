@@ -158,13 +158,6 @@ return {
             last_indent_marker = "└",
             indent_size = 2,
           },
-          icon = {
-            folder_closed = "▸",
-            folder_open = "▾",
-            folder_empty = "▸",
-            folder_empty_open = "▾",
-            default = "*",
-          },
           git_status = {
             symbols = {
               added = "✚",
