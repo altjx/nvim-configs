@@ -33,4 +33,9 @@ map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "Git commits" 
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git branches" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<cr>", { desc = "Git status (changed files)" })
 
+-- Terminal mappings (alternative to <M-i> for Warp users)
+map({ "n", "t" }, "<leader>tf", function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+end, { desc = "Toggle floating terminal" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
