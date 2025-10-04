@@ -31,6 +31,32 @@ return {
     },
   },
 
+  -- Diffview for comprehensive git diff viewing
+  {
+    "sindrets/diffview.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewFileHistory" },
+    keys = {
+      { "<leader>gdo", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview" },
+      { "<leader>gdc", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
+      { "<leader>gdh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
+      { "<leader>gdH", "<cmd>DiffviewFileHistory<cr>", desc = "Branch History" },
+    },
+    config = function()
+      require("diffview").setup({
+        enhanced_diff_hl = true,
+        view = {
+          default = {
+            layout = "diff2_horizontal",
+          },
+          merge_tool = {
+            layout = "diff3_horizontal",
+          },
+        },
+      })
+    end,
+  },
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
