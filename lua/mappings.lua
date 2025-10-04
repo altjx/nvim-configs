@@ -38,4 +38,9 @@ map({ "n", "t" }, "<leader>tf", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "Toggle floating terminal" })
 
+-- Format current file with Rubocop
+map("n", "<leader>fm", function()
+  require("conform").format({ lsp_fallback = true })
+end, { desc = "Format current file" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

@@ -23,7 +23,6 @@ return {
         changedelete = { text = '~' },
         untracked    = { text = '┆' },
       },
-      show_deleted = false,  -- Toggle with <leader>gd
       word_diff = false,  -- Toggle with <leader>gd
       diff_opts = {
         internal = true,  -- Use built-in diff
