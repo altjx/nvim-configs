@@ -252,6 +252,24 @@ return {
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 
+  -- GitHub Copilot
+  {
+    "github/copilot.vim",
+    event = "InsertEnter",
+    config = function()
+      -- Accept copilot suggestion with <Tab>
+      vim.g.copilot_no_tab_map = true
+      vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true, script = true })
+
+      -- Additional keybindings (optional)
+      vim.g.copilot_assume_mapped = true
+      vim.g.copilot_tab_fallback = ""
+
+      -- Node.js binary path (auto-detected, but can be customized if needed)
+      -- vim.g.copilot_node_command = "/path/to/node"
+    end,
+  },
+
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
