@@ -33,6 +33,19 @@ map("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "Git commits" 
 map("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git branches" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<cr>", { desc = "Git status (changed files)" })
 
+-- Window navigation with Option/Alt keys (works in SSM sessions)
+-- These complement the default Ctrl-h/j/k/l mappings from NvChad
+map("n", "<M-h>", "<C-w>h", { desc = "Switch window left" })
+map("n", "<M-j>", "<C-w>j", { desc = "Switch window down" })
+map("n", "<M-k>", "<C-w>k", { desc = "Switch window up" })
+map("n", "<M-l>", "<C-w>l", { desc = "Switch window right" })
+
+-- Terminal mode navigation with Option/Alt keys
+map("t", "<M-h>", "<C-\\><C-n><C-w>h", { desc = "Terminal: Navigate left" })
+map("t", "<M-j>", "<C-\\><C-n><C-w>j", { desc = "Terminal: Navigate down" })
+map("t", "<M-k>", "<C-\\><C-n><C-w>k", { desc = "Terminal: Navigate up" })
+map("t", "<M-l>", "<C-\\><C-n><C-w>l", { desc = "Terminal: Navigate right" })
+
 -- Terminal mappings (alternative to <M-i> for Warp users)
 map({ "n", "t" }, "<leader>tf", function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
