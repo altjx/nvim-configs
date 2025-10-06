@@ -56,6 +56,39 @@ return {
     end,
   },
 
+  -- LazyGit integration
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      {
+        "<leader>gg",
+        function()
+          local git_root = vim.fn.systemlist("git -C " .. vim.fn.shellescape(vim.fn.expand("%:p:h")) .. " rev-parse --show-toplevel")[1]
+          if git_root and git_root ~= "" and vim.v.shell_error == 0 then
+            vim.cmd("LazyGit")
+          else
+            vim.notify("Not in a git repository", vim.log.levels.WARN)
+          end
+        end,
+        desc = "LazyGit"
+      },
+      { "<leader>gc", "<cmd>LazyGitCurrentFile<cr>", desc = "LazyGit Current File" },
+    },
+    config = function()
+      vim.g.lazygit_floating_window_use_plenary = 0
+    end,
+  },
+
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
