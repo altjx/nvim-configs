@@ -56,4 +56,16 @@ map("n", "<leader>fm", function()
   require("conform").format({ lsp_fallback = true })
 end, { desc = "Format current file" })
 
+-- Copy file paths
+map("n", "<leader>yf", function()
+  local path = vim.fn.expand("%")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Copy relative file path" })
+map("n", "<leader>yF", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  vim.notify("Copied: " .. path, vim.log.levels.INFO)
+end, { desc = "Copy absolute file path" })
+
 -- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")

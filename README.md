@@ -128,6 +128,13 @@ Lazy.nvim will automatically install all plugins on first launch.
 |------|-----|--------|-------------|
 | n | `<leader>fm` | Format file | Format current file with conform.nvim |
 
+### File Path Operations
+
+| Mode | Key | Action | Description |
+|------|-----|--------|-------------|
+| n | `<leader>yf` | Copy relative path | Copy relative file path to clipboard |
+| n | `<leader>yF` | Copy absolute path | Copy absolute file path to clipboard |
+
 ### Terminal
 
 | Mode | Key | Action | Description |
